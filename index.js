@@ -3,9 +3,8 @@ const express=require('express');
 const cors=require('cors');
 const mongoose=require('mongoose');
 const router = require('./routes/routes');
-
-
-
+const dotenv=require('dotenv');
+dotenv.config();
 const app=express();
  app.use(express.json())
  app.use(cors())
@@ -14,7 +13,7 @@ const app=express();
 // app.use('/',router)
 app.use('/',router)
  //MongoDB url
- const URI="mongodb+srv://QuizApp:2WKeigxo38yXUaC7@cluster0.487qx.mongodb.net/quiz?retryWrites=true&w=majority"
+ const URI=process.env.MONGO_URL
 
  mongoose.connect(URI).then(()=>{
      app.listen(PORT,()=>{
