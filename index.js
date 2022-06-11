@@ -8,16 +8,16 @@ dotenv.config();
 const app=express();
  app.use(express.json())
  app.use(cors())
- const PORT= 5000;
  //router
 // app.use('/',router)
 app.use('/',router)
  //MongoDB url
  const URI=process.env.MONGO_URL
-
+ 
+ 
  mongoose.connect(URI).then(()=>{
-     app.listen(PORT,()=>{
-         console.log(`Server is running on ${PORT}`)
+     app.listen(process.env.PORT || 5000,()=>{
+         console.log(`Server is running on`)
      })
  }).catch((error)=>{
      console.log(error)
